@@ -40,3 +40,44 @@ def mark_task_complete():
                 print("Invalid task number.")
         except ValueError:
             print("Invalid input. Please enter a valid task number.")
+
+def delete_task():
+    """Delete a task from the to-do list."""
+    view_tasks()
+    if tasks:
+        try:
+            task_number = int(input("\nEnter the task number to delete: "))
+            if 1 <= task_number <= len(tasks):
+                removed_task = tasks.pop(task_number - 1)
+                print(f"Task '{removed_task['title']}' has been deleted.")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid task number.")
+
+def main():
+    """Main function to run the to-do list application."""
+    while True:
+        display_menu()
+        try:
+            choice = input("\nChoose an option (1-5): ").strip()
+            if choice == '1':
+                add_task()
+            elif choice == '2':
+                view_tasks()
+            elif choice == '3':
+                mark_task_complete()
+            elif choice == '4':
+                delete_task()
+            elif choice == '5':
+                print("\nThank you for using the To-Do List App. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please choose a valid option.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            print("\nReturning to the menu...")
+
+if __name__ == "__main__":
+    main()
