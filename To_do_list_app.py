@@ -1,7 +1,7 @@
 tasks = []
 
 def display_menu():
-    """Display the menu options."""
+
     print("\nWelcome to the To-Do List App!")
     print("\nMenu:")
     print("1. Add a task")
@@ -17,3 +17,12 @@ def add_task():
         print(f"Task '{task_title}' added to the list.")
     else:
         print("Task title cannot be empty.")
+
+def view_tasks():
+    """View the list of tasks with their statuses."""
+    if not tasks:
+        print("\nYour to-do list is empty.")
+    else:
+        print("\nYour tasks:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task['title']} - {task['status']}")
