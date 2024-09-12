@@ -26,3 +26,17 @@ def view_tasks():
         print("\nYour tasks:")
         for index, task in enumerate(tasks, start=1):
             print(f"{index}. {task['title']} - {task['status']}")
+
+def mark_task_complete():
+    """Mark a specific task as complete."""
+    view_tasks()
+    if tasks:
+        try:
+            task_number = int(input("\nEnter the task number to mark as complete: "))
+            if 1 <= task_number <= len(tasks):
+                tasks[task_number - 1]["status"] = "Complete"
+                print(f"Task '{tasks[task_number - 1]['title']}' marked as complete.")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid task number.")
